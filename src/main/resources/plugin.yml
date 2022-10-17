@@ -1,0 +1,14 @@
+name: DLand_Items
+version: '${project.version}'
+main: dland_items.dland_items.DLand_Items
+api-version: 1.16
+authors: [ DertFin ]
+description: Items For DLand
+
+commands:
+  dlanditem:
+    usage: Используй /dlanditem <give> <nickname> <item>.
+    aliases:
+      - di
+      - DLandItem
+      - dli
