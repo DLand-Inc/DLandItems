@@ -1,9 +1,11 @@
 package dland_items.dland_items.Commands;
 
 import dland_items.dland_items.DLand_Items;
+import dland_items.dland_items.Items.Items;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
@@ -14,8 +16,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,6 +187,156 @@ public class dlandItem implements CommandExecutor {
                         sender.sendMessage(ChatColor.RED + "Вы не указали описание предмета (после DLandList)!");
                         return true;
                     }
+                } else if (args[2].equalsIgnoreCase("tankchestplate")) {
+                    ItemStack TankChestplate = new ItemStack(Material.IRON_CHESTPLATE,1);
+                    ItemMeta TankChestplateMeta = TankChestplate.getItemMeta();
+                    TankChestplateMeta.setDisplayName(ChatColor.DARK_PURPLE + "Tank Chestplate");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.RED + "Здоровье : " + ChatColor.RED + "+2");
+                    loreList.add(ChatColor.GOLD + "Скорость : " + ChatColor.WHITE + "-1");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Способность : ");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "• Запас Здоровья II");
+                    loreList.add("");
+                    loreList.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Эпический");
+                    TankChestplateMeta.setLore(loreList);
+                    float tank_speed = -0.005f;
+                    TankChestplateMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier("GENERIC_MOVEMENT_SPEED", tank_speed, AttributeModifier.Operation.ADD_NUMBER));
+                    TankChestplateMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("GENERIC_MAX_HELTH", 4, AttributeModifier.Operation.ADD_NUMBER));
+                    TankChestplateMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    TankChestplate.setItemMeta(TankChestplateMeta);
+                    player.getInventory().addItem(TankChestplate);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("tankleggings")) {
+                    ItemStack TankLeggings = new ItemStack(Material.IRON_LEGGINGS,1);
+                    ItemMeta TankLeggingsMeta = TankLeggings.getItemMeta();
+                    TankLeggingsMeta.setDisplayName(ChatColor.DARK_PURPLE + "Tank Leggings");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.RED + "Здоровье : " + ChatColor.RED + "+2");
+                    loreList.add(ChatColor.GOLD + "Скорость : " + ChatColor.WHITE + "-1");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Способность : ");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "• Запас Здоровья II");
+                    loreList.add("");
+                    loreList.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Эпический");
+                    TankLeggingsMeta.setLore(loreList);
+                    float tank_speed = -0.005f;
+                    TankLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier("GENERIC_MOVEMENT_SPEED", tank_speed, AttributeModifier.Operation.ADD_NUMBER));
+                    TankLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("GENERIC_MAX_HELTH", 4, AttributeModifier.Operation.ADD_NUMBER));
+                    TankLeggingsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    TankLeggings.setItemMeta(TankLeggingsMeta);
+                    player.getInventory().addItem(TankLeggings);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("tankboots")) {
+                    ItemStack TankBoots = new ItemStack(Material.IRON_BOOTS,1);
+                    ItemMeta TankBootsMeta = TankBoots.getItemMeta();
+                    TankBootsMeta.setDisplayName(ChatColor.DARK_PURPLE + "Tank Boots");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.RED + "Здоровье : " + ChatColor.RED + "+2");
+                    loreList.add(ChatColor.GOLD + "Скорость : " + ChatColor.WHITE + "-1");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Способность : ");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "• Запас Здоровья II");
+                    loreList.add("");
+                    loreList.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Эпический");
+                    TankBootsMeta.setLore(loreList);
+                    float tank_speed = -0.005f;
+                    TankBootsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier("GENERIC_MOVEMENT_SPEED", tank_speed, AttributeModifier.Operation.ADD_NUMBER));
+                    TankBootsMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("GENERIC_MAX_HELTH", 4, AttributeModifier.Operation.ADD_NUMBER));
+                    TankBootsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    TankBoots.setItemMeta(TankBootsMeta);
+                    player.getInventory().addItem(TankBoots);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("tankhelmet")) {
+                    ItemStack TankHelmet = new ItemStack(Material.IRON_HELMET,1);
+                    ItemMeta TankHelmetMeta = TankHelmet.getItemMeta();
+                    TankHelmetMeta.setDisplayName(ChatColor.DARK_PURPLE + "Tank Helmet");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.RED + "Здоровье : " + ChatColor.RED + "+2");
+                    loreList.add(ChatColor.GOLD + "Скорость : " + ChatColor.WHITE + "-1");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Способность : ");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "• Запас Здоровья II");
+                    loreList.add("");
+                    loreList.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Эпический");
+                    TankHelmetMeta.setLore(loreList);
+                    float tank_speed = -0.005f;
+                    TankHelmetMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier("GENERIC_MOVEMENT_SPEED", tank_speed, AttributeModifier.Operation.ADD_NUMBER));
+                    TankHelmetMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("GENERIC_MAX_HELTH", 4, AttributeModifier.Operation.ADD_NUMBER));
+                    TankHelmetMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    TankHelmet.setItemMeta(TankHelmetMeta);
+                    player.getInventory().addItem(TankHelmet);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("streenghrune")){
+                    ItemStack StreenghRune = new ItemStack(Material.FIREWORK_STAR,1);
+                    ItemMeta StreenghRuneMeta = StreenghRune.getItemMeta();
+                    StreenghRuneMeta.setDisplayName(org.bukkit.ChatColor.GOLD + "Руна Силы");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(org.bukkit.ChatColor.GOLD + "Сила : " + org.bukkit.ChatColor.RED + "+1");
+                    loreList.add("");
+                    loreList.add("" + org.bukkit.ChatColor.GOLD + org.bukkit.ChatColor.BOLD + "Легендарный");
+                    StreenghRuneMeta.setLore(loreList);
+                    NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+                    StreenghRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "streengh");
+                    StreenghRune.setItemMeta(StreenghRuneMeta);
+                    player.getInventory().addItem(StreenghRune);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("healthrune")){
+                    ItemStack HealthRune = new ItemStack(Material.FIREWORK_STAR,1);
+                    ItemMeta HealthRuneMeta = HealthRune.getItemMeta();
+                    HealthRuneMeta.setDisplayName(org.bukkit.ChatColor.GOLD + "Руна Здоровья");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(org.bukkit.ChatColor.GOLD + "Здоровье : " + org.bukkit.ChatColor.RED + "+3");
+                    loreList.add("");
+                    loreList.add("" + org.bukkit.ChatColor.GOLD + org.bukkit.ChatColor.BOLD + "Легендарный");
+                    HealthRuneMeta.setLore(loreList);
+                    NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+                    HealthRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "health_boost");
+                    HealthRune.setItemMeta(HealthRuneMeta);
+                    player.getInventory().addItem(HealthRune);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("regenrune")){
+                    ItemStack RegenRune = new ItemStack(Material.FIREWORK_STAR,1);
+                    ItemMeta RegenRuneMeta = RegenRune.getItemMeta();
+                    RegenRuneMeta.setDisplayName(org.bukkit.ChatColor.GOLD + "Руна Регенерации");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(org.bukkit.ChatColor.GOLD + "Регенерация : " + org.bukkit.ChatColor.RED + "+1");
+                    loreList.add("");
+                    loreList.add("" + org.bukkit.ChatColor.GOLD + org.bukkit.ChatColor.BOLD + "Легендарный");
+                    RegenRuneMeta.setLore(loreList);
+                    NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+                    RegenRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "regen");
+                    RegenRune.setItemMeta(RegenRuneMeta);
+                    player.getInventory().addItem(RegenRune);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("speedrune")){
+                    ItemStack SpeedRune = new ItemStack(Material.FIREWORK_STAR,1);
+                    ItemMeta SpeedRuneMeta = SpeedRune.getItemMeta();
+                    SpeedRuneMeta.setDisplayName(org.bukkit.ChatColor.GOLD + "Руна Скорости");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(org.bukkit.ChatColor.GOLD + "Скорость : " + org.bukkit.ChatColor.GREEN + "+1");
+                    loreList.add("");
+                    loreList.add("" + org.bukkit.ChatColor.GOLD + org.bukkit.ChatColor.BOLD + "Легендарный");
+                    SpeedRuneMeta.setLore(loreList);
+                    NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+                    SpeedRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "speed");
+                    SpeedRune.setItemMeta(SpeedRuneMeta);
+                    player.getInventory().addItem(SpeedRune);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("nightvisionrune")){
+                    ItemStack NightVisionRune = new ItemStack(Material.FIREWORK_STAR,1);
+                    ItemMeta NightVisionRuneMeta = NightVisionRune.getItemMeta();
+                    NightVisionRuneMeta.setDisplayName(org.bukkit.ChatColor.GOLD + "Руна Ночного-Виденья");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(org.bukkit.ChatColor.GOLD + "Ночное-Виденье : " + org.bukkit.ChatColor.YELLOW + "ON");
+                    loreList.add("");
+                    loreList.add("" + org.bukkit.ChatColor.GOLD + org.bukkit.ChatColor.BOLD + "Легендарный");
+                    NightVisionRuneMeta.setLore(loreList);
+                    NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+                    NightVisionRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "night_vision");
+                    NightVisionRune.setItemMeta(NightVisionRuneMeta);
+                    player.getInventory().addItem(NightVisionRune);
+                    return true;
                 }
             }
         } else {

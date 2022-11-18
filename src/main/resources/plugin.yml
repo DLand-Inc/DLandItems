@@ -12,3 +12,13 @@ commands:
       - di
       - DLandItem
       - dli
+  dlanditemarmor:
+    usage: Используй /dlia <armor_set_name>
+    aliases:
+      - dlia
+      - dlandarmor
+  dlanditemgun:
+    usage: Используй /dlig <gun_name>
+    aliases:
+      - dlandgun
+      - dlig

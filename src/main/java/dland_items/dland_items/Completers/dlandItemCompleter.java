@@ -21,7 +21,11 @@ public class dlandItemCompleter implements TabCompleter {
                 "HunterSword",
                 "AdminSword",
                 "AdminStick",
-                "DLandList"
+                "DLandList",
+                "TankChestplate",
+                "TankLeggings",
+                "TankBoots",
+                "TankHelmet"
             );
         } else if (args.length == 4 && args[2].equalsIgnoreCase("dlandlist")) {
             return List.of(
