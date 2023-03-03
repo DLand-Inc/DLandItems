@@ -3,19 +3,23 @@ package dland_items.dland_items.Commands;
 import dland_items.dland_items.DLand_Items;
 import dland_items.dland_items.Items.Items;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
@@ -336,6 +340,149 @@ public class dlandItem implements CommandExecutor {
                     NightVisionRuneMeta.getPersistentDataContainer().set(RuneKey, PersistentDataType.STRING, "night_vision");
                     NightVisionRune.setItemMeta(NightVisionRuneMeta);
                     player.getInventory().addItem(NightVisionRune);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("goldenhead")) {
+                    ItemStack GoldenHead = new ItemStack(Material.GOLDEN_APPLE,1);
+                    ItemMeta GoldenHeadMeta = GoldenHead.getItemMeta();
+                    GoldenHeadMeta.setDisplayName(ChatColor.GOLD + "Золотая Голова");
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.GOLD + "Способность - ПКМ : ");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "· Регенерация");
+                    loreList.add("");
+                    loreList.add("" + ChatColor.GOLD + ChatColor.BOLD + "Легендарный");
+                    GoldenHeadMeta.setLore(loreList);
+
+
+                    GoldenHead.setItemMeta(GoldenHeadMeta);
+                    player.getInventory().addItem(GoldenHead);
+                    return true;
+                }  else if (args[2].equalsIgnoreCase("exp30")) {
+                    if (player.getTotalExperience() >= 1395){
+                        player.giveExp(-1395);
+                        player.sendMessage(ChatColor.GREEN + "Вы успешно поместили 30 лвл в бутылёк! ");
+                        ItemStack exp30 = new ItemStack(Material.EXPERIENCE_BOTTLE,1);
+                        ItemMeta exp30Meta = exp30.getItemMeta();
+                        exp30Meta.setDisplayName("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Бутылёк опыта " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "[30LvL]");
+                        List<String> loreList = new ArrayList<>();
+                        loreList.add(ChatColor.LIGHT_PURPLE + "Просто киньте под себя и получите +30 лвл");
+                        loreList.add(ChatColor.DARK_GRAY + "Работает только в основной руке!!!");
+                        loreList.add("");
+                        loreList.add("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Эпический");
+                        exp30Meta.setLore(loreList);
+
+                        exp30.setItemMeta(exp30Meta);
+                        player.getInventory().addItem(exp30);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "У вас недостаточно опыта :<");
+                    }
+                    return true;
+                } else if (args[2].equalsIgnoreCase("exp50")) {
+                    if (player.getTotalExperience() >= 5345){
+                        player.giveExp(-5345);
+                        player.sendMessage(ChatColor.GREEN + "Вы успешно поместили 50 лвл в бутылёк! ");
+                        ItemStack exp30 = new ItemStack(Material.EXPERIENCE_BOTTLE,1);
+                        ItemMeta exp30Meta = exp30.getItemMeta();
+                        exp30Meta.setDisplayName("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Бутылёк опыта " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "[50LvL]");
+                        List<String> loreList = new ArrayList<>();
+                        loreList.add(ChatColor.LIGHT_PURPLE + "Просто киньте под себя и получите +50 лвл");
+                        loreList.add(ChatColor.DARK_GRAY + "Работает только в основной руке!!!");
+                        loreList.add("");
+                        loreList.add("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Эпический");
+                        exp30Meta.setLore(loreList);
+
+                        exp30.setItemMeta(exp30Meta);
+                        player.getInventory().addItem(exp30);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "У вас недостаточно опыта :<");
+                    }
+                    return true;
+                } else if (args[2].equalsIgnoreCase("exp70")) {
+                    if (player.getTotalExperience() >= 12895){
+                        player.giveExp(-12895);
+                        player.sendMessage(ChatColor.GREEN + "Вы успешно поместили 70 лвл в бутылёк! ");
+                        ItemStack exp30 = new ItemStack(Material.EXPERIENCE_BOTTLE,1);
+                        ItemMeta exp30Meta = exp30.getItemMeta();
+                        exp30Meta.setDisplayName("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Бутылёк опыта " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "[750LvL]");
+                        List<String> loreList = new ArrayList<>();
+                        loreList.add(ChatColor.LIGHT_PURPLE + "Просто киньте под себя и получите +70 лвл");
+                        loreList.add(ChatColor.DARK_GRAY + "Работает только в основной руке!!!");
+                        loreList.add("");
+                        loreList.add("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Эпический");
+                        exp30Meta.setLore(loreList);
+
+                        exp30.setItemMeta(exp30Meta);
+                        player.getInventory().addItem(exp30);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "У вас недостаточно опыта :<");
+                    }
+                    return true;
+                } else if (args[2].equalsIgnoreCase("exp100")) {
+                    if (player.getTotalExperience() >= 30970){
+                        player.giveExp(-30970);
+                        player.sendMessage(ChatColor.GREEN + "Вы успешно поместили 100 лвл в бутылёк! ");
+                        ItemStack exp30 = new ItemStack(Material.EXPERIENCE_BOTTLE,1);
+                        ItemMeta exp30Meta = exp30.getItemMeta();
+                        exp30Meta.setDisplayName("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Бутылёк опыта " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "[100LvL]");
+                        List<String> loreList = new ArrayList<>();
+                        loreList.add(ChatColor.LIGHT_PURPLE + "Просто киньте под себя и получите +100 лвл");
+                        loreList.add(ChatColor.DARK_GRAY + "Работает только в основной руке!!!");
+                        loreList.add("");
+                        loreList.add("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Эпический");
+                        exp30Meta.setLore(loreList);
+
+                        exp30.setItemMeta(exp30Meta);
+                        player.getInventory().addItem(exp30);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "У вас недостаточно опыта :<");
+                    }
+                    return true;
+                } else if (args[2].equalsIgnoreCase("badomen_potion")) {
+                    if (player.getInventory().containsAtLeast(Items.getGorkayaSubstanstiya(),2)) {
+                        player.getInventory().removeItem(Items.getAlchemyBottle());
+                        player.getInventory().removeItem(Items.getGorkayaSubstanstiya());
+                        player.getInventory().removeItem(Items.getGorkayaSubstanstiya());
+                        player.sendMessage("Типа всё усшепно ._.");
+
+                    } else {
+                        player.sendMessage(ChatColor.RED + "У вас нет необходимых ингредиентов! ");
+                    }
+                    return true;
+                } else if (args[2].equalsIgnoreCase("fastpickaxe")) {
+                    ItemStack a = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+                    ItemMeta aM = a.getItemMeta();
+                    aM.setDisplayName("" + ChatColor.GOLD + ChatColor.BOLD + "Я ЕСТЬ СКОРОСТЬ!!!");
+                    aM.addEnchant(Enchantment.DIG_SPEED, 6,true);
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.GOLD + "Эффективность : " + ChatColor.DARK_AQUA + "+6");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Особенность");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "· Моментальное разрушение");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "  камня");
+                    loreList.add("");
+                    loreList.add("" + ChatColor.GOLD + ChatColor.BOLD + "Легендарный");
+                    aM.setLore(loreList);
+                    aM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    a.setItemMeta(aM);
+                    player.getInventory().addItem(a);
+                    return true;
+                } else if (args[2].equalsIgnoreCase("fastaxe")) {
+                    ItemStack a = new ItemStack(Material.DIAMOND_AXE, 1);
+                    ItemMeta aM = a.getItemMeta();
+                    aM.setDisplayName("" + ChatColor.GOLD + ChatColor.BOLD + "Я ЕСТЬ СКОРОСТЬ!!!");
+                    aM.addEnchant(Enchantment.DIG_SPEED, 7,true);
+                    List<String> loreList = new ArrayList<>();
+                    loreList.add(ChatColor.GOLD + "Эффективность : " + ChatColor.DARK_AQUA + "+7");
+                    loreList.add("");
+                    loreList.add(ChatColor.GOLD + "Особенность");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "· Быстрое разрушение");
+                    loreList.add(ChatColor.LIGHT_PURPLE + "  древесины");
+                    loreList.add("");
+                    loreList.add("" + ChatColor.GOLD + ChatColor.BOLD + "Легендарный");
+                    aM.setLore(loreList);
+                    aM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                    a.setItemMeta(aM);
+
+                    player.getInventory().addItem(a);
                     return true;
                 }
             }

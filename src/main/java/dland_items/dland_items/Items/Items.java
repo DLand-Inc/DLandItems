@@ -42,4 +42,38 @@ public class Items {
         NamespacedKey RuneKey = new NamespacedKey((Plugin) this, "Rune");
         return StreenghRune;
     }
+
+    public static ItemStack getAlchemyBottle() {
+        ItemStack alchemyBottle = new ItemStack(Material.GLASS_BOTTLE,1);
+        ItemMeta alchemyBottleMeta = alchemyBottle.getItemMeta();
+        alchemyBottleMeta.setDisplayName("" + ChatColor.BLUE + ChatColor.BOLD + "Бутылка Алхимика");
+        List<String> loreList = new ArrayList<>();
+        loreList.add(ChatColor.LIGHT_PURPLE + "> Используется для создания");
+        loreList.add(ChatColor.LIGHT_PURPLE + "  зелий у алхимика");
+        loreList.add("");
+        loreList.add("" + ChatColor.BLUE + ChatColor.BOLD + "Редкий");
+        alchemyBottleMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        alchemyBottleMeta.addEnchant(Enchantment.KNOCKBACK,1,false);
+        alchemyBottleMeta.setLore(loreList);
+        alchemyBottle.setItemMeta(alchemyBottleMeta);
+
+        return alchemyBottle;
+    }
+
+    public static ItemStack getGorkayaSubstanstiya(){
+        ItemStack gorkSubst = new ItemStack(Material.GLOWSTONE_DUST,1);
+        ItemMeta gorkSubstMeta = gorkSubst.getItemMeta();
+        gorkSubstMeta.setDisplayName("" + ChatColor.BLUE + ChatColor.BOLD + "Горькая Субстанция");
+        List<String> loreList = new ArrayList<>();
+        loreList.add(ChatColor.LIGHT_PURPLE + "> Используется для создания");
+        loreList.add(ChatColor.LIGHT_PURPLE + "Зелья Дурного Знамени");
+        loreList.add("");
+        loreList.add("" + ChatColor.BLUE + ChatColor.BOLD + "Редкий");
+        gorkSubstMeta.setLore(loreList);
+        gorkSubstMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        gorkSubstMeta.addEnchant(Enchantment.KNOCKBACK,1,false);
+
+        gorkSubst.setItemMeta(gorkSubstMeta);
+        return gorkSubst;
+    }
 }
