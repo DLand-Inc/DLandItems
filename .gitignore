@@ -113,3 +113,5 @@ buildNumber.properties
 run/
 
 /src/main/java/dland_items/dland_items/Guns
+
+# git push -u origin master
