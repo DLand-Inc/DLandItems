@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -14,36 +15,48 @@ import org.bukkit.potion.PotionEffectType;
 
 public class RuneEvent implements Listener {
 
+    public static PotionEffect streengh = new PotionEffect(PotionEffectType.INCREASE_DAMAGE,100*10000,0);
+    public static PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 100*10000,0);
+    public static PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 100*10000,0);
+    public static PotionEffect health_boost = new PotionEffect(PotionEffectType.HEALTH_BOOST, 100*10000, 0); // 3 Hearth
+    public static PotionEffect night_vision = new PotionEffect(PotionEffectType.NIGHT_VISION,100*10000,220); // Full Vision
     @EventHandler
-    public void SwitchItemEvent(PlayerInteractEvent event){
-        PersistentDataContainer data = event.getPlayer().getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer();
-        NamespacedKey RuneKey = new NamespacedKey("rune", "rune");
+    public void onItemHoldGetEffect(PlayerItemHeldEvent event) {
+        if (event.getPlayer().getInventory().getItem(event.getNewSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руны Силы")){
+            event.getPlayer().addPotionEffect(streengh);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Силы'");
+        } else if (event.getPlayer().getInventory().getItem(event.getNewSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Скорости")){
+            event.getPlayer().addPotionEffect(speed);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Скорости'");
+        } else if (event.getPlayer().getInventory().getItem(event.getNewSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Регенерации")){
+            event.getPlayer().addPotionEffect(regen);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Регенирации'");
+        } else if (event.getPlayer().getInventory().getItem(event.getNewSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Здоровья")){
+            event.getPlayer().addPotionEffect(health_boost);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Здоровья'");
+        } else if (event.getPlayer().getInventory().getItem(event.getNewSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Ночного-Виденья")){
+            event.getPlayer().addPotionEffect(night_vision);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Ночного-Виденья'");
+        }
+    }
 
-        // Effects .                                                               1 second = duration:20
-        PotionEffect streengh = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 200,0);
-        PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 200,0);
-        PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 200 ,0);
-        PotionEffect health_boost = new PotionEffect(PotionEffectType.HEALTH_BOOST, 200, 0); // 3 Hearth
-        PotionEffect night_vision = new PotionEffect(PotionEffectType.NIGHT_VISION,200,220); // Full Vision
-
-        if (data.has(RuneKey, PersistentDataType.STRING)) {
-            String rune_type = data.get(RuneKey, PersistentDataType.STRING);
-            if (rune_type.equalsIgnoreCase("streengh")){
-                event.getPlayer().addPotionEffect(streengh);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Силы'. Когда он закончится просто нажмите ЛКМ.");
-            } else if (rune_type.equalsIgnoreCase("speed")){
-                event.getPlayer().addPotionEffect(speed);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Скорости'. Когда он закончится просто нажмите ЛКМ.");
-            } else if (rune_type.equalsIgnoreCase("regen")){
-                event.getPlayer().addPotionEffect(regen);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Регенирации'. Когда он закончится просто нажмите ЛКМ.");
-            } else if (rune_type.equalsIgnoreCase("health_boost")){
-                event.getPlayer().addPotionEffect(health_boost);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Здоровья'. Когда он закончится просто нажмите ЛКМ.");
-            } else if (rune_type.equalsIgnoreCase("night_vision")){
-                event.getPlayer().addPotionEffect(night_vision);
-                event.getPlayer().sendMessage(ChatColor.GREEN + "Вы получили эффект 'Руны Ночного-Виденья'. Когда он закончится просто нажмите ЛКМ.");
-            }
+    @EventHandler
+    public void onItemHoldRemoveEffect(PlayerItemHeldEvent event) {
+        if (event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руны Силы")){
+            event.getPlayer().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+            event.getPlayer().sendMessage(ChatColor.RED + "Магия 'Руны Силы' покинула вас");
+        } else if (event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Скорости")){
+            event.getPlayer().removePotionEffect(PotionEffectType.SPEED);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Магия 'Руны Скорости' покинула вас");
+        } else if (event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Регенерации")){
+            event.getPlayer().removePotionEffect(PotionEffectType.REGENERATION);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Магия 'Руны Регенирации' покинула вас");
+        } else if (event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Здоровья")){
+            event.getPlayer().removePotionEffect(PotionEffectType.HEALTH_BOOST);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Магия 'Руны Здоровья' покинула вас");
+        } else if (event.getPlayer().getInventory().getItem(event.getPreviousSlot()).getItemMeta().getDisplayName().equals(org.bukkit.ChatColor.GOLD + "Руна Ночного-Виденья")){
+            event.getPlayer().removePotionEffect(PotionEffectType.NIGHT_VISION);
+            event.getPlayer().sendMessage(ChatColor.GREEN + "Магия 'Руны Ночного виденья' покинула вас");
         }
     }
 }
